@@ -1,7 +1,8 @@
 # Getting_Cleaning_Data_Course_Project
 Course Project for Getting and Cleaning Data Course
 
-There are the steps I followed to product a tidy data set:
+This a description of how the script works.
+These are the steps I followed to product a tidy data set:
 
 First, I performed step 1 in the assignment to merge the test and training data files into one set. This first required combining the three text files that make up the test and training data, respectively, into one file for each set. To do this I set the working directory to where the files could be found, used read.table to read in each of the .txt files into r as a table, and then used cbind to combine the columns. Since the X data contained 561 columns and the subject and y data contained 1 a piece, this resulted in a dataframe for both test and training data with 563 columns. Once I had a single data frame for both test and training data, I combined them together by rows using rbind.
 
