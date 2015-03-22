@@ -1,4 +1,14 @@
 # Getting_Cleaning_Data_Course_Project
 Course Project for Getting and Cleaning Data Course
 
-There are the steps I followed to product a tidy data set
+There are the steps I followed to product a tidy data set:
+
+First, I performed step 1 in the assignment to merge the test and training data files into one set. This first required combining the three text files that make up the test and training data, respectively, into one file for each set. To do this I set the working directory to where the files could be found, used read.table to read in each of the .txt files into r as a table, and then used cbind to combine the columns. Since the X data contained 561 columns and the subject and y data contained 1 a piece, this resulted in a dataframe for both test and training data with 563 columns. Once I had a single data frame for both test and training data, I combined them together by rows using rbind.
+
+Second, I performed step 4 of the assignment to appropriately lavel the data set with descriptive variable names. I did step 4 out of order so I could use the column names to select the mean and standard deviation measurements in step 2. I used read.table to read into R the variable names contained in the features.txt file. This was a 2 column data frame, with the second column containing the feature names as a factor vector. I changed this to a character vector. Then I created a vector for column headings using "subject", "activity", and the features data vector. I set the column names for my data frame from step 1 to the column headings vector.
+
+Third, I performed step 2 of the assignment to extract only the measurements on the mean and standard deviation for each measurement. I decided to exclude the mean measurements for frequency and only select the measurements that contained "mean()" or "std()." To do this I subsetted the full data frame by finding the column headings that contained "mean()", and "std()", and then subsetting the data frame based on those column selections. 
+
+Fourth, I performed step 3 of the assignment and named the activities in the data set with the descriptive activity names defined in the activity labels txt file. To do this I read in the activity_labels.txt file and set the second column to a character vector from a factor. Then I created a for loop that read through each row of the full data set and assigned the activity column value in that row to its equivalent activity label defined in the activity label data frame. 
+
+Fifth, I performed step 5 of the assignment to create a second, independent tiny data set with the average of each variable for each activity and each subject. To do this I loaded plyr and reshape2 libraries to use the melt and ddply function. I used melt to create a new data set that listed the original data set based on 4 columns: subject, activity, variable, and value. Then I used the ddply function to calculate the mean of the data for each unique combination of subject, activity, and variable. This created a tidy data set in long format with 4 columns: subject, activity, variable, mean.
