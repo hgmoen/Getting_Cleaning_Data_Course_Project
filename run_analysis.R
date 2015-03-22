@@ -22,7 +22,6 @@ col_subset_mean <- grep("mean()" , F, value=TRUE, fixed=TRUE)
 col_subset_std <- grep("std()" , F, value=TRUE, fixed=TRUE)
 col_subset_headings <- c("subject", "activity", col_subset_mean, col_subset_std)
 allData_m_std <- allData[, col_subset_headings]
-class(allData_m_std$activity)
 
 ## 3. Uses descriptive activity names to name the activities in the data set
 activity_list <- read.table("activity_labels.txt")
